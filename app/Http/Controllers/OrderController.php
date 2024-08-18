@@ -108,6 +108,13 @@ class OrderController extends Controller
     public function approve($id)
     {
         try {
+            $user = Auth::user();
+            if (in_array($user->role_id, [3])) {
+                return response()->json([
+                    'message' => 'You are not authorized to approve this order',
+                ])->setStatusCode(403);
+            }
+
             $order = Order::with([
                 'product',
                 'customer',
@@ -135,6 +142,13 @@ class OrderController extends Controller
     public function reject(Request $request, $id)
     {
         try {
+            $user = Auth::user();
+            if (in_array($user->role_id, [3])) {
+                return response()->json([
+                    'message' => 'You are not authorized to reject this order',
+                ])->setStatusCode(403);
+            }
+
             $request->validate([
                 'reject_message' => 'required',
             ]);
