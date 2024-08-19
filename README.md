@@ -15,3 +15,12 @@
 
 project can be accessed online at the following URL
 `https://crm.perdanamain.my.id/`
+
+### Account
+
+1. username : admin
+   password : admin
+2. username : manager
+   password : manager
+3. username : sales
+   password : sales
